@@ -1,10 +1,11 @@
 console.log("Hello World!")
 
+const apenasNumeros = /[0-9]/g;
+const apenasLetras = /[a-z]/ig;
+
 let numero = Math.floor(Math.random() * 100) + 1;
 console.log(numero);
 
-const apenasNumeros = /[0-9]/g;
-const apenasLetras = /[a-z]/ig;
 
 let tentativa;
 let erros;
@@ -36,10 +37,11 @@ palpite.onblur = function jogo() {
         erradas.innerHTML = `O palpite não pode estar em branco!`;
     }
 
-    if (palpites.value != apenasNumeros) {
-        palpite.value = palpites.value.replaceAll(apenasLetras, '')
+    if (palpite.value != apenasNumeros) {
+        console.log("Letras");
+        palpite = palpite.value.replaceAll(apenasLetras, '')
         palpite.innerHTML = `${palpite.value}`;
-        palpite.style.border = '2px solid var(--lightRed)';
+
         erradas.innerHTML = `O palpite não pode ser com letras`;
     }
 }
