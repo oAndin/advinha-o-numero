@@ -7,6 +7,7 @@
     list-style: none;
     border: 0;
     font-family: 'Roboto', sans-serif;
+    user-select: none;
 }
 
 :root {
@@ -16,6 +17,7 @@
     --white: #fff;
     --red: #FF0000;
     --lightRed: #DE5540;
+    --green: #09ff00;
 }
 
 body {
@@ -72,8 +74,13 @@ span#container input#palpite {
     width: 55px;
     height: 50px;
     border-radius: 5px;
-    border: 2px solid var(--lightRed);
-    background: #FFF;
+    border: 2px solid var(--black);
+    background: var(--white);
     margin-top: 34px;
     margin-bottom: 26px;
+    text-align: center;
+}
+
+span#container h3#erradas {
+    color: var(--yellow);
 }
