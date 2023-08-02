@@ -3,14 +3,17 @@ console.log("Hello World!");
 const apenasNumeros = /[0-9]/g;
 const apenasLetras = /[a-z]/gi;
 
-let tentativa;
-let erros = [];
-let chances = 10;
 let numero = Math.floor(Math.random() * 100) + 1;
 console.log(numero);
+let chances = 10;
+
+let tentativa;
+let erros = [];
+
 palpite.onfocus = function () {
     palpite.value = "";
 };
+
 palpite.onblur = function jogo() {
     chances--;
     if (chances > 1) {
@@ -25,6 +28,7 @@ palpite.onblur = function jogo() {
             if (Number(tentativa) == numero) {
                 console.log("acertou");
                 palpite.style.border = "2px solid var(--green)";
+                biaInGame.src= "./public/img/bia-correta.png"
             }
         }
         if (palpite.value == "") {
@@ -34,8 +38,9 @@ palpite.onblur = function jogo() {
             aviso.style.visibility = 'visible';
         }
     }
+
     if (chances == 0) {
-        alert("Você perdeu");
+        biaInGame.src= "./public/img/bia-errada.png"
     }
 };
 
