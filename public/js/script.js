@@ -4,7 +4,7 @@ const apenasNumeros = /[0-9]/g;
 const apenasLetras = /[a-z]/gi;
 
 let tentativa;
-let erros;
+let erros = [];
 let chances = 10;
 let numero = Math.floor(Math.random() * 100) + 1;
 console.log(numero);
@@ -17,13 +17,10 @@ palpite.onblur = function jogo() {
         tentativa = palpite.value;
         if (palpite.value != "") {
             if (Number(tentativa) != numero) {
-                console.log("errou");
+                erros.push(tentativa);
                 palpite.style.border = "2px solid var(--lightRed)";
-                if (erradas.innerHTML != "") {
-                    erradas.innerHTML += `- ${palpite.value}`;
-                } else {
-                    erradas.innerHTML += ` ${palpite.value}`;
-                }
+                console.log(erros);
+                erradas.innerHTML += erros;
             }
             if (Number(tentativa) == numero) {
                 console.log("acertou");
@@ -31,11 +28,18 @@ palpite.onblur = function jogo() {
             }
         }
         if (palpite.value == "") {
-            palpite.style.border = "2px solid var(--lightRed)";
-            erradas.innerHTML = `O palpite não pode estar em branco!`;
+            // erradas.innerHTML = `O palpite não pode estar em branco!`;
+            textoAviso.innerHTML = "Você precisa tentar advinhar o número!"
+            fora.style.visibility = 'visible';
+            aviso.style.visibility = 'visible';
         }
     }
     if (chances == 0) {
         alert("Você perdeu");
     }
 };
+
+fora.onclick = function () {
+    fora.style.visibility = 'hidden';
+    aviso.style.visibility = 'hidden';
+}
