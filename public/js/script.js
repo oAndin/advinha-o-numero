@@ -1,5 +1,5 @@
 console.log("Hello World!");
-
+// icone.setAttribute('name', 'moon')
 const apenasNumeros = /[0-9]/g;
 const apenasLetras = /[a-z]/gi;
 
@@ -22,8 +22,14 @@ palpite.onblur = function jogo() {
             if (Number(tentativa) != numero) {
                 erros.push(tentativa);
                 palpite.style.border = "2px solid var(--lightRed)";
-                console.log(erros);
-                erradas.innerHTML += erros;
+
+                if ( Number(tentativa) > numero) {
+                    
+                }
+                if ( Number(tentativa) < numero) {
+
+                }
+
             }
             if (Number(tentativa) == numero) {
                 console.log("acertou");
@@ -32,7 +38,6 @@ palpite.onblur = function jogo() {
             }
         }
         if (palpite.value == "") {
-            // erradas.innerHTML = `O palpite não pode estar em branco!`;
             textoAviso.innerHTML = "Você precisa tentar advinhar o número!"
             fora.style.visibility = 'visible';
             aviso.style.visibility = 'visible';
@@ -42,6 +47,7 @@ palpite.onblur = function jogo() {
     if (chances == 0) {
         biaInGame.src= "./public/img/bia-errada.png"
     }
+    erradas.innerHTML = erros;
 };
 
 fora.onclick = function () {
