@@ -34,12 +34,6 @@ palpite.onblur = function jogo() {
             palpite.style.border = "2px solid var(--lightRed)";
             erradas.innerHTML = `O palpite não pode estar em branco!`;
         }
-
-        if (palpite.value != apenasNumeros) {
-            console.log("Letras");
-            palpite.value = palpite.value.replaceAll(apenasLetras, "");
-            erradas.innerHTML = `O palpite não pode ser com letras`;
-        }
     }
     if (chances == 0) {
         alert("Você perdeu");
