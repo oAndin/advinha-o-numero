@@ -84,3 +84,47 @@ span#container input#palpite {
 span#container h3#erradas {
     color: var(--yellow);
 }
+
+span#fora {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    visibility: hidden;
+    background-color: var(--black);
+}
+span#aviso {
+    position: absolute;
+    width: 500px;
+    height: 442px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 1rem;
+    /* visibility: hidden; */
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+span#aviso img#biaEmBranco {
+    width: 258px;
+    height: 258px;
+    position: relative;
+}
+
+span#aviso h1#textoAviso {
+    text-align: center;
+    font-size: 48px;
+    color: var(--yellow);
+}
+
+span#aviso #iconeVazio {
+    position: absolute;
+    top: 47%;
+    left: 53%;
+    fill: var(--black);
+}
