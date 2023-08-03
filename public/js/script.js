@@ -14,6 +14,12 @@ palpite.onfocus = function () {
 };
 
 palpite.onblur = function jogo() {
+    if(erros.includes(palpite.value) == true) {
+        textoAviso.innerHTML = "Você já tentou esse número"
+        iconeVazio.setAttribute('name','')
+        fora.style.visibility = 'visible';
+        aviso.style.visibility = 'visible';
+    }
     if (palpite.value == "") {
         textoAviso.innerHTML = "Você precisa tentar advinhar o número!"
         fora.style.visibility = 'visible';
