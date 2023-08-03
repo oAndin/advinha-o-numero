@@ -14,9 +14,9 @@ palpite.onfocus = function () {
 };
 
 palpite.onblur = function jogo() {
-    if(erros.includes(palpite.value) == true) {
+    if (erros.includes(palpite.value) == true) {
         textoAviso.innerHTML = "Você já tentou esse número"
-        iconeVazio.setAttribute('name','')
+        iconeVazio.setAttribute('name', '')
         fora.style.visibility = 'visible';
         aviso.style.visibility = 'visible';
     }
@@ -32,12 +32,12 @@ palpite.onblur = function jogo() {
             if (Number(tentativa) != numero) {
                 erros.push(tentativa);
                 palpite.style.border = "2px solid var(--lightRed)";
-                biaInGame.src= "./public/img/bia-pensando.png";
-                if ( Number(tentativa) > numero) {
+                biaInGame.src = "./public/img/bia-pensando.png";
+                if (Number(tentativa) > numero) {
                     dica.style.visibility = "visible";
                     dica.setAttribute('name', 'down-arrow-alt')
                 }
-                if ( Number(tentativa) < numero) {
+                if (Number(tentativa) < numero) {
                     dica.style.visibility = "visible";
                     dica.setAttribute('name', 'up-arrow-alt')
                 }
@@ -46,19 +46,28 @@ palpite.onblur = function jogo() {
             if (Number(tentativa) == numero) {
                 console.log("acertou");
                 palpite.style.border = "2px solid var(--green)";
-                biaInGame.src= "./public/img/bia-correta.png"
+                biaInGame.src = "./public/img/bia-correta.png"
             }
         }
+        erradas.innerHTML = erros;
     }
 
     if (chances === 0) {
-        biaInGame.src= "./public/img/bia-errada.png"
+        biaInGame.src = "./public/img/bia-errada.png"
         dica.style.visibility = "hidden";
+        palpite.style.visibility = 'hidden';
+        above.innerHTML = `
+        <p id="naoAcertou">Você não acertou, o número era ${numero}</p>
+        <button id="tenteNova" onclick='reload()'>Tente Novamente</button>
+        `
     }
-    erradas.innerHTML = erros;
 };
 
 fora.onclick = function () {
     fora.style.visibility = 'hidden';
     aviso.style.visibility = 'hidden';
+}
+
+function reload() {
+    location.reload();
 }

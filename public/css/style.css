@@ -17,6 +17,7 @@
     --white: #fff;
     --red: #FF0000;
     --lightRed: #DE5540;
+    --notSoLightRed: #9c3d2e;
     --green: #09ff00;
 }
 
@@ -134,4 +135,31 @@ span#aviso #iconeVazio {
     top: 47%;
     left: 53%;
     fill: var(--black);
+}
+
+button#tenteNova {
+    width: 161px;
+    height: 35px;
+    padding: 8px;
+    background-color: var(--lightRed);
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px 0 8px 0;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+button#tenteNova:hover {
+    background-color: var(--notSoLightRed);
+}
+
+div#above {
+    top: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
 }
