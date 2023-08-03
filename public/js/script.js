@@ -14,26 +14,29 @@ palpite.onfocus = function () {
 };
 
 palpite.onblur = function jogo() {
+    if (Number(tentativa) == numero) {
+        console.log("acertou");
+        palpite.style.border = "2px solid var(--green)";
+        biaInGame.src = "./public/img/bia-correta.png"
+    }
     if (palpite.value == "") {
         textoAviso.innerHTML = "Você precisa tentar advinhar o número!"
         fora.style.visibility = 'visible';
         aviso.style.visibility = 'visible';
     }
+    if (erros.includes(palpite.value) == true) {
+        textoAviso.innerHTML = "Você já tentou esse número"
+        fora.style.visibility = 'visible';
+        aviso.style.visibility = 'visible';
+        iconeVazio.setAttribute('name', '')
+        erros.pop();
+    }
     if (chances > 0) {
         chances--;
         tentativa = palpite.value;
-        if (palpite.value != "") {
+        if (palpite.value != "" && erros.includes(palpite.value) == false) {
             if (Number(tentativa) != numero) {
-                if (erros.includes(palpite.value) == true) {
-                    textoAviso.innerHTML = "Você já tentou esse número"
-                    iconeVazio.setAttribute('name', '')
-                    fora.style.visibility = 'visible';
-                    aviso.style.visibility = 'visible';
-                    erros = erros.pop();
-                }
-                if (erros.includes(palpite.value) == false) {
-                    erros.push(tentativa);
-                }
+                erros.push(tentativa)
                 palpite.style.border = "2px solid var(--lightRed)";
                 biaInGame.src = "./public/img/bia-pensando.png";
                 if (Number(tentativa) > numero) {
@@ -44,18 +47,10 @@ palpite.onblur = function jogo() {
                     dica.style.visibility = "visible";
                     dica.setAttribute('name', 'up-arrow-alt')
                 }
-
-            }
-            if (Number(tentativa) == numero) {
-                console.log("acertou");
-                palpite.style.border = "2px solid var(--green)";
-                biaInGame.src = "./public/img/bia-correta.png"
             }
             console.log(erros);
+            erradas.innerHTML = erros;
         }
-        // let errosString = erros.toString()
-        // errosString.replaceAll(',' , ' - ');
-        erradas.innerHTML = erros;
     }
 
     if (chances === 0) {
