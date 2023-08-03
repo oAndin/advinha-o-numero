@@ -14,29 +14,23 @@ palpite.onfocus = function () {
 };
 
 palpite.onblur = function jogo() {
-    if (Number(tentativa) == numero) {
-        console.log("acertou");
-        palpite.style.border = "2px solid var(--green)";
-        biaInGame.src = "./public/img/bia-correta.png"
-    }
+    tentativa = palpite.value;
     if (palpite.value == "") {
         textoAviso.innerHTML = "Você precisa tentar advinhar o número!"
         fora.style.visibility = 'visible';
         aviso.style.visibility = 'visible';
     }
-    if (erros.includes(palpite.value) == true) {
+    if (erros.includes(palpite.value) === true) {
         textoAviso.innerHTML = "Você já tentou esse número"
         fora.style.visibility = 'visible';
         aviso.style.visibility = 'visible';
         iconeVazio.setAttribute('name', '')
-        erros.pop();
     }
     if (chances > 0) {
+        erros.push(tentativa)
         chances--;
-        tentativa = palpite.value;
-        if (palpite.value != "" && erros.includes(palpite.value) == false) {
+        if (palpite.value != "" && erros.includes(palpite.value) == false && Number(tentativa) != numero) {
             if (Number(tentativa) != numero) {
-                erros.push(tentativa)
                 palpite.style.border = "2px solid var(--lightRed)";
                 biaInGame.src = "./public/img/bia-pensando.png";
                 if (Number(tentativa) > numero) {
@@ -48,11 +42,17 @@ palpite.onblur = function jogo() {
                     dica.setAttribute('name', 'up-arrow-alt')
                 }
             }
-            console.log(erros);
-            erradas.innerHTML = erros;
         }
+        console.log(erros);
+        erradas.innerHTML = erros;
     }
-
+    if (Number(tentativa) == numero) {
+        console.log("acertou");
+        palpite.style.border = "2px solid var(--green)";
+        biaInGame.src = "./public/img/bia-correta.png"
+        iconeVazio.setAttribute('name', '')
+        dica.setAttribute('name', '')
+    }
     if (chances === 0) {
         biaInGame.src = "./public/img/bia-errada.png"
         dica.style.visibility = "hidden";
