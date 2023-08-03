@@ -14,12 +14,6 @@ palpite.onfocus = function () {
 };
 
 palpite.onblur = function jogo() {
-    if (erros.includes(palpite.value) == true) {
-        textoAviso.innerHTML = "Você já tentou esse número"
-        iconeVazio.setAttribute('name', '')
-        fora.style.visibility = 'visible';
-        aviso.style.visibility = 'visible';
-    }
     if (palpite.value == "") {
         textoAviso.innerHTML = "Você precisa tentar advinhar o número!"
         fora.style.visibility = 'visible';
@@ -30,7 +24,16 @@ palpite.onblur = function jogo() {
         tentativa = palpite.value;
         if (palpite.value != "") {
             if (Number(tentativa) != numero) {
-                erros.push(tentativa);
+                if (erros.includes(palpite.value) == true) {
+                    textoAviso.innerHTML = "Você já tentou esse número"
+                    iconeVazio.setAttribute('name', '')
+                    fora.style.visibility = 'visible';
+                    aviso.style.visibility = 'visible';
+                    erros = erros.pop();
+                }
+                if (erros.includes(palpite.value) == false) {
+                    erros.push(tentativa);
+                }
                 palpite.style.border = "2px solid var(--lightRed)";
                 biaInGame.src = "./public/img/bia-pensando.png";
                 if (Number(tentativa) > numero) {
@@ -48,7 +51,10 @@ palpite.onblur = function jogo() {
                 palpite.style.border = "2px solid var(--green)";
                 biaInGame.src = "./public/img/bia-correta.png"
             }
+            console.log(erros);
         }
+        // let errosString = erros.toString()
+        // errosString.replaceAll(',' , ' - ');
         erradas.innerHTML = erros;
     }
 
