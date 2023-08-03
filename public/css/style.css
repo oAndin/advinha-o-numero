@@ -49,6 +49,7 @@ span#container #side-side {
     justify-content: center;
     align-items: start;
 }
+
 span#container img {
     width: 258px;
     height: 258px;
@@ -59,15 +60,20 @@ span#container div#biaText {
     width: 245px;
     height: 218px;
     color: var(--black);
-    /* font-size: 48px; */
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    
 }
 
 span#container div#bia {
     color: var(--yellow);
+}
+
+#dica {
+    position: absolute;
+    fill: var(--lightRed);
+    top: 15%;
+    left: 55%;
 }
 
 span#container input#palpite {
@@ -95,6 +101,7 @@ span#fora {
     visibility: hidden;
     background-color: var(--black);
 }
+
 span#aviso {
     position: absolute;
     width: 500px;
