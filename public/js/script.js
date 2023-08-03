@@ -27,9 +27,11 @@ palpite.onblur = function jogo() {
         iconeVazio.setAttribute('name', '')
     }
     if (chances > 0) {
-        erros.push(tentativa)
-        chances--;
-        if (palpite.value != "" && erros.includes(palpite.value) == false && Number(tentativa) != numero) {
+        
+        biaInGame.src = "./public/img/bia-pensando.png";
+        if (tentativa != "" && erros.includes(palpite.value) == false && Number(tentativa) != numero) {
+            chances--;
+            erros.push(tentativa)
             if (Number(tentativa) != numero) {
                 palpite.style.border = "2px solid var(--lightRed)";
                 biaInGame.src = "./public/img/bia-pensando.png";
